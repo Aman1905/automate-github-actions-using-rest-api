@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/trigger-workflow', async (req, res) => {
   try {
     const response = await axios.post(
-      `https://api.github.com/repos/aman1905/automate-github-actions-using-rest-api/actions/workflows/main.yml/dispatches`,
+      `https://api.github.com/repos/Aman1905/automate-github-actions-using-rest-api/actions/workflows/main.yml/dispatches`,
       { ref: "main" },
       {
         headers: {
