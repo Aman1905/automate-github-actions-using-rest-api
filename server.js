@@ -2,10 +2,14 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
+const cors = require('cors');
 require('dotenv').config();
+console.log('GitHub Token:', process.env.GITHUB_TOKEN);
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors());
 
 // Serve static HTML files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -15,7 +19,7 @@ app.post('/trigger-workflow', async (req, res) => {
   try {
     const response = await axios.post(
       `https://api.github.com/repos/Aman1905/automate-github-actions-using-rest-api/actions/workflows/main.yml/dispatches`,
-      { ref: "main" },
+      { ref: "master" },
       {
         headers: {
           Authorization: `token ${process.env.GITHUB_TOKEN}`,
